@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import search from '../assets/images/icon-search.svg';
-import WordDetails from './wordDetails';
-import Smiley from '../assets/images/smiley.svg'
+import searchIcon from '../assets/images/icon-search.svg';
+import WordDetails from './wordDetails'
+
 
 const DictionaryForm = () => {
     const [word, setWord] = useState('');
@@ -18,15 +18,15 @@ const DictionaryForm = () => {
                     setWordData(data[0]);
                     setFetchError('');
                 } else {
-                    setWordData(null); // Clear previous data
+                    setWordData(null); 
                     setFetchError('No data found for the word.');
                 }
             } else {
-                setWordData(null); // Clear previous data
+                setWordData(null); 
                 setFetchError('Network error: ' + response.statusText);
             }
         } catch (error) {
-            setWordData(null); // Clear previous data
+            setWordData(null); 
             setFetchError('Error fetching data: ' + error.message);
         }
     };
@@ -38,7 +38,7 @@ const DictionaryForm = () => {
             setError('Whoops, can’t be empty…');
         } else {
             setError('');
-            setWordData(null); // Clear previous data
+            setWordData(null); 
             fetchData();
         }
     };
@@ -58,7 +58,7 @@ const DictionaryForm = () => {
                 />
 
                 <img
-                    src={search}
+                    src={searchIcon}
                     alt='search'
                     onClick={handleSubmit}
                     className='absolute right-4 top-5 h-[14px] w-[14px] cursor-pointer'
@@ -71,8 +71,8 @@ const DictionaryForm = () => {
                     <p className='text-[#757575] mt-6 text-md'>Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at a later time or head to the web instead.</p>
                 </div>
             )}
-            {error &&(
-                <p className="text-red-500 text-xl mt-2"> {error}</p>
+            {error && (
+                <p className="text-red-500 text-xl mt-2">{error}</p>
             )}
             {wordData && <WordDetails wordData={wordData} />}
         </div>

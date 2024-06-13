@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../src/components/nav'
+import Nav from '../src/components/nav';
 import DictionaryForm from '../src/components/dictionaryForm';
 import './App.css';
 
@@ -20,11 +20,22 @@ function App() {
     setSelectedFont(font);
   };
 
+  const fontClassMap = {
+    sans: 'font-sans',
+    serif: 'font-serif',
+    mono: 'font-mono',
+  };
+
   return (
     <div className={`${isDarkMode ? 'dark' : 'light'}`}>
       <div className='dark:bg-black dark:text-white min-h-screen pb-20 px-6'>
-        <main className={`font-${selectedFont} max-w-[737px] pt-10 mx-auto`}>
-          <Nav isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} onFontChange={handleFontChange} selectedFont={selectedFont} />
+        <main className={`${fontClassMap[selectedFont]} max-w-[737px] pt-10 mx-auto`}>
+          <Nav
+            isDarkMode={isDarkMode}
+            toggleDarkMode={toggleDarkMode}
+            onFontChange={handleFontChange}
+            selectedFont={selectedFont}
+          />
           <DictionaryForm />
         </main>
       </div>
